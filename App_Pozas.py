@@ -32,10 +32,13 @@ li = st.number_input('% Li', value=0.0, step=0.01)
 cl = st.number_input('% Cl', value=0.0, step=0.01)
 h3bo3 = st.number_input('% H3BO3', value=0.0, step=0.01)
 
+# Automatically calculate Mg_rounded
+mg_rounded = round(mg, 2)
+
 # When the user clicks the "Predict" button
 if st.button("Predecir Tipo de Poza"):
-    # Collect the input data into a list
-    input_data = [k, na, mg, ca, so4, li, cl, h3bo3]
+    # Collect the input data into a list, including Mg_rounded
+    input_data = [k, na, mg, mg_rounded, ca, so4, li, cl, h3bo3]
     
     # Make prediction
     result = predict_pond_type(input_data)
